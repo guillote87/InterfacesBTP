@@ -1,0 +1,172 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "interfases",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.4",
+      "toolsId": "7c5ba18d-9808-4f81-8b82-39f102427ac2"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZGW_MONITOR_INTERFASES_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "orgSales": {
+        "uri": "/sap/opu/odata/sap/ZGW_REST_SERVICES/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "tiles": {
+				"uri": "model/tiles.json",
+				"type": "JSON"
+			}
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.116.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "interfases.i18n.i18n"
+        }
+      },
+      "oDataInterfasesModel": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      },
+      "org": {
+        "dataSource": "orgSales",
+        "preload": true,
+        "settings": {}
+      }
+      ,
+      "tilesModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "tiles"
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "interfases.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteMainView",
+          "pattern": ":?query:",
+          "target": [
+            "TargetMainView"
+          ]
+        },
+        {
+          "name": "ErrorDetail",
+          "pattern": "ErrorDetail/{IdLog}",
+          "target": [
+            "ErrorDetail"
+          ]
+        },
+        {
+          "name": "NotFound",
+          "pattern": "NotFound",
+          "target": [
+            "NotFound"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetMainView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MainView",
+          "viewName": "MainView"
+        },
+        "ErrorDetail": {
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "ErrorDetail",
+          "viewName": "ErrorDetail"
+        },
+        "NotFound": {
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "NotFound",
+          "viewName": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "interfases.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

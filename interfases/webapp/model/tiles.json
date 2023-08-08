@@ -1,0 +1,46 @@
+{
+    "tiles": [
+        {
+            "id": "01",
+            "title": "Clientes",
+            "subtitle": "Salesforce a SAP",
+            "footer": "Interfase 1"
+        },
+        {
+            "id": "02",
+            "title": "Pedidos",
+            "subtitle": "Salesforce a SAP",
+            "footer": "Interfase 2"
+        },
+        {
+            "id": "03",
+            "title": "Pedidos Portal",
+            "subtitle": "SAP a portales",
+            "footer": "Interfase 3"
+        },
+        {
+            "id": "04",
+            "title": "Pedidos Salesforce",
+            "subtitle": "SAP a Salesforce",
+            "footer": "Interfase 4"
+        },
+        {
+            "id": "05",
+            "title": "Clientes Salesforce",
+            "subtitle": "Sap a Salesforce",
+            "footer": "Interfase 5"
+        },
+        {
+            "id": "06",
+            "title": "Act/Des Pedido Portal",
+            "subtitle": "Sap a Portales",
+            "footer": "Interfase 6"
+        },
+        {
+            "id": "07",
+            "title": "Aviso de Pago",
+            "subtitle": "Sap a Salesforce",
+            "footer": "Interfase 7"
+        }
+    ]
+}

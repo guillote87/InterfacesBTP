@@ -1,0 +1,113 @@
+<mvc:View controllerName="interfases.controller.MainView"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:chart="sap.suite.ui.microchart"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:l="sap.ui.layout">
+	<Shell >
+		<Page id="page" title="{i18n>title}" showNavButton="false" navButtonPress="onNavBack">
+			<VBox class="sapUiResponsiveMargin">
+				<l:HorizontalLayout busy="false" id="TileContainerExpanded" allowWrapping="true" content="{path :'/tiles' ,factory :'.createTiles'}" class="sapUiSmallMargin">
+				</l:HorizontalLayout>
+			</VBox>
+			<VBox id="tableVBox" class="sapUiResponsiveMargin" alignContent="Center" visible="false">
+				<fb:FilterBar id="filterBar" useToolbar="false" reset="onReset" search="searchFilter" clear="onClear" cancel="onCancel">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" name="orgvta" label="{i18n>SalesOrg}">
+							<fb:control  >
+								<!-- <Input id="orgVta" width="50%"></Input> -->
+								<ComboBox id="orgVta" showSecondaryValues="true" items="{
+										model: 'org',
+										path: '/OrgVentaSet',
+										sorter: { path: 'Nombre' }
+										}">
+									<core:ListItem key="{org>Id}" text="{org>Id}" additionalText="{org>Nombre}" />
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="G2" name="fecha" label="{i18n>dateRange}" visibleInFilterBar="true">
+							<fb:control  >
+								<DateRangeSelection id="fecha" valueFormat="dd.MM.yyyy" displayFormat='dd/MM/yyyy' change="onDateChange" />
+							</fb:control>
+						</fb:FilterGroupItem>
+						<fb:FilterGroupItem groupName="G3" name=" " visibleInFilterBar="true" label="{i18n>cleanFilters}">
+							<fb:control >
+								<Button class="stretch" icon="sap-icon://clear-filter" press="onCleanFilters" />
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+				</fb:FilterBar>
+
+				<Table  id="interfaseTable" items="{path:'FilteredErrors>/',
+					           sorter: {path: 'Fecha',
+							   descending: true
+							   }}" growing="true" growingThreshold="30">
+							   <headerToolbar>
+				<OverflowToolbar>
+					<Title id="table-title" textAlign="Left"></Title>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button icon="sap-icon://excel-attachment" press="exportToExcel" />
+				</OverflowToolbar>
+			</headerToolbar>
+					<columns>
+						<Column >
+							<Text text="{i18n>SalesOrg}"/>
+						</Column>
+						<Column minScreenWidth="Small" width="auto" demandPopin="true">
+							<Text text="{i18n>Date}" />
+						</Column>
+						<Column minScreenWidth="Small" demandPopin="true">
+							<Text text="{i18n>Time}" />
+						</Column>
+					
+						<Column id="PedidoSap" >
+							<Text text="{i18n>OrderSAP}" />
+						</Column>
+						<Column >
+							<Text text="{i18n>ClientSAP}" />
+						</Column>
+						<Column id="PedidoPortal" minScreenWidth="Small" demandPopin="false">
+							<Text text="{i18n>OrderPortal}" />
+						</Column>
+						<Column minScreenWidth="Small" demandPopin="false">
+							<Text text="{i18n>IdSite}"/>
+						</Column>
+						<Column id="Oportunidad" >
+							<Text text="{i18n>Oportunity}"/>
+						</Column>
+							<Column minScreenWidth="Small" demandPopin="true">
+							<Text text="{i18n>AdditionalInfo}"/>
+						</Column>
+					</columns>
+					<items>
+						<ColumnListItem vAlign="Middle" type="Navigation" press=".onPress">
+							<cells>
+								<Text text="{FilteredErrors>OrgVentas}"/>
+								<Text text="{path: 'FilteredErrors>Fecha',
+											 type:'sap.ui.model.type.Date',
+											 formatOptions: {
+												source:{},
+														pattern: 'dd/MM/yyyy'
+														}
+														}"/>
+								<Text text="{path:'FilteredErrors>Hora',
+											 type:'sap.ui.model.type.Time',
+											 formatOptions: {
+															source: {},
+														pattern: 'HH:mm:ss'
+														}}"/>
+								<Text text="{FilteredErrors>PedidoSAP}"/>
+								<Text text="{FilteredErrors>ClienteSAP}"/>
+								<Text text="{FilteredErrors>PedidoPortal}"/>
+								<Text text="{FilteredErrors>IdSite}"/>
+								<Text text="{FilteredErrors>Oportunidad}"/>
+								<Text text="{FilteredErrors>Mensaje}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</Page>
+	</Shell>
+</mvc:View>
