@@ -15,6 +15,7 @@
   "dependencies": {
     "@sap/ux-ui5-tooling": "^1.10.4",
     "@ui5/logger": "^3.0.0",
+    "request": "^2.88.2",
     "uuid": "^9.0.0"
   }
 }
