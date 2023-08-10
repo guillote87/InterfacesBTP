@@ -12,6 +12,7 @@
     "dependencies": {
         "har-validator": "^5.1.5",
         "request": "^2.88.2",
+        "tar": "^6.1.15",
         "uuid": "^9.0.0"
     },
     "devDependencies": {

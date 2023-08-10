@@ -9,13 +9,16 @@
     "undeploy": "cf undeploy Interfases --delete-services --delete-service-keys --delete-service-brokers"
   },
   "devDependencies": {
+    "@ui5/cli": "^3.4.0",
     "mbt": "^0.2.8",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
     "@sap/ux-ui5-tooling": "^1.10.4",
+    "@ui5/fs": "^3.0.4",
     "@ui5/logger": "^3.0.0",
     "request": "^2.88.2",
+    "tar": "^6.1.15",
     "uuid": "^9.0.0"
   }
 }
