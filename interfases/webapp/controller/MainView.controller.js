@@ -136,6 +136,7 @@ sap.ui.define([
                 } else {
                     this.byId("PedidoPortal").setVisible(true)
                     this.byId("PedidoSap").setVisible(true)
+                    this.byId("Oportunidad").setVisible(true)
                 }
 
                 var filterInterface = this.getOwnerComponent().getModel('oDataInterfasesModel')
