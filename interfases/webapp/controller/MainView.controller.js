@@ -139,6 +139,7 @@ sap.ui.define([
                     this.byId("Oportunidad").setVisible(true)
                 }
 
+
                 var filterInterface = this.getOwnerComponent().getModel('oDataInterfasesModel')
 
                 filterInterface.setHeaders({
