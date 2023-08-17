@@ -31,7 +31,8 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: https://soades.sap.navent.com:44301
+            url: https://soaqa.sap.navent.com:1443
+            # DEV url: https://soades.sap.navent.com:44301
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
